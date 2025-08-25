@@ -1,0 +1,14 @@
+domain: mattress_specs
+high_confidence:
+  - tempurpedic.com
+  - help.tempurpedic.com
+  - patents.google.com
+medium_confidence:
+  - mattressfirm.com
+  - macys.com
+  - goodbed.com
+  - raymourflanigan.com
+notes:
+  - Use High for official height, warranty, manufacturer materials.
+  - Use Medium to cross-validate technical details when brand is silent.
+  - Unknowns must be null.
