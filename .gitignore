@@ -9,3 +9,6 @@ __pycache__/
 
 # Logs
 *.log
+
+# VS Code (optional; keep if your team prefers)
+.vscode/
