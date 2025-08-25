@@ -1,0 +1,28 @@
+name: Validate Specifications
+
+on:
+  pull_request:
+    paths:
+      - 'specs/**'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+      - name: Validate JSON schema
+        run: |
+          python scripts/validate_json.py specs contracts/schema.example.json
+      - name: Check evidence quality
+        run: |
+          python scripts/check_evidence.py specs
+      - name: Score readiness
+        run: |
+          python scripts/score_readiness.py specs --min-score 85

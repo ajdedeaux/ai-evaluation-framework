@@ -1,0 +1,114 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Mattress Specification",
+  "type": "object",
+  "required": ["spec_uid", "brand", "model_display_name", "size", "profile_height_in"],
+  "properties": {
+    "spec_uid": { "type": "string", "description": "Unique ID for this spec entry" },
+    "brand": { "type": "string" },
+    "collection": { "type": "string", "description": "Base model or line (e.g., RestorePlus, ProAdapt)" },
+    "retailer_variant": { "type": "string", "description": "Retailer-specific variant name if any" },
+    "model_display_name": { "type": "string" },
+    "size": { "type": "string", "enum": ["Twin", "TwinXL", "Full", "Queen", "King", "CalKing", "SplitKing", "SplitCalKing"] },
+    "profile_height_in": { "type": "number" },
+    "layers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "position": { "type": "integer" },
+          "name": { "type": "string" },
+          "material": { "type": "string" },
+          "thickness_in": { "type": ["number", "null"] },
+          "notes": { "type": "string" }
+        }
+      }
+    },
+    "grid_tech": {
+      "type": "object",
+      "properties": {
+        "type": { "type": "string", "description": "e.g., GelFlex Grid" },
+        "thickness_in": { "type": ["number", "null"] }
+      }
+    },
+    "coil_system": {
+      "type": "object",
+      "properties": {
+        "type": { "type": "string" },
+        "height_in": { "type": ["number", "null"] },
+        "zones": { "type": ["integer", "null"] },
+        "count_queen": { "type": ["integer", "null"] },
+        "edge_support": { "type": ["string", "null"] }
+      }
+    },
+    "cover": {
+      "type": "object",
+      "properties": {
+        "construction": { "type": "string" },
+        "fibers": { "type": ["string", "null"] },
+        "features": { "type": ["string", "null"] }
+      }
+    },
+    "weights": {
+      "type": "object",
+      "properties": {
+        "queen_lb": { "type": ["number", "null"] },
+        "king_lb": { "type": ["number", "null"] }
+      }
+    },
+    "warranty": {
+      "type": "object",
+      "properties": {
+        "years": { "type": ["integer", "null"] },
+        "foundation_requirements": { "type": ["string", "null"] },
+        "notes": { "type": ["string", "null"] }
+      }
+    },
+    "retail": {
+      "type": "object",
+      "properties": {
+        "retailers": { "type": "array", "items": { "type": "string" } },
+        "msrp_usd": { "type": ["number", "null"] },
+        "map_usd": { "type": ["number", "null"] },
+        "typical_sale_usd": { "type": ["number", "null"] }
+      }
+    },
+    "media": {
+      "type": "object",
+      "properties": {
+        "hero_image_url": { "type": ["string", "null"] },
+        "xray_image_url": { "type": ["string", "null"] },
+        "datasheet_pdf_url": { "type": ["string", "null"] }
+      }
+    },
+    "evidence": {
+      "type": "array",
+      "description": "Citations with confidence",
+      "items": {
+        "type": "object",
+        "properties": {
+          "source": { "type": "string" },
+          "url": { "type": "string" },
+          "claim": { "type": "string" },
+          "confidence": { "type": "string", "enum": ["High", "Medium", "Low"] }
+        }
+      }
+    },
+    "sme": {
+      "type": "object",
+      "description": "Subject Matter Expert layer",
+      "properties": {
+        "hero_features": { "type": "array", "items": { "type": "string" } },
+        "fit_personas": { "type": "array", "items": { "type": "string" } },
+        "common_objections": { "type": "array", "items": { "type": "string" } },
+        "positioning_notes": { "type": ["string", "null"] }
+      }
+    },
+    "extras": {
+      "type": "object",
+      "description": "Schema-flex area for new attributes discovered later",
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": false
+}
