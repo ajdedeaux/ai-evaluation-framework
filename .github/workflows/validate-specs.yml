@@ -22,7 +22,7 @@ jobs:
           python scripts/validate_json.py specs contracts/schema.example.json
       - name: Check evidence quality
         run: |
-          python scripts/check_evidence.py specs
+          python scripts/check_evidence.py specs contracts/source_registry.example.yml
       - name: Score readiness
         run: |
           python scripts/score_readiness.py specs --min-score 85

@@ -1,5 +1,14 @@
+# macOS
 .DS_Store
+
+# Python
 __pycache__/
 *.pyc
 .venv/
 .env
+
+# Logs
+*.log
+
+# VS Code (optional; keep if your team prefers)
+.vscode/
